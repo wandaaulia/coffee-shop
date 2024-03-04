@@ -17,6 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import "../styles/globals.css";
 import SearchBar from "./SearchBar";
+import useShoppingCart from "../states/cart.state";
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -29,6 +30,8 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 const AppBarMain = () => {
   const mq = useMediaQuery("(min-width:500px)");
 
+  const { amount } = useShoppingCart();
+
   return (
     <AppBar
       sx={{
@@ -39,6 +42,7 @@ const AppBarMain = () => {
         zIndex: "10000000",
         paddingTop: "30px",
         width: "100%",
+        position: "absolute",
         maxWidth: mq ? "400px" : "unset",
       }}
       className="appBar-main"
@@ -56,7 +60,7 @@ const AppBarMain = () => {
 
         <Box>
           <IconButton aria-label="cart" sx={{ margin: 0, padding: 0 }}>
-            <StyledBadge badgeContent={4}>
+            <StyledBadge badgeContent={amount.length}>
               <ShoppingBagOutlinedIcon color="action" />
             </StyledBadge>
           </IconButton>

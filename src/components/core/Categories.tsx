@@ -3,14 +3,18 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FreeBreakfastOutlinedIcon from "@mui/icons-material/FreeBreakfastOutlined";
 import RamenDiningOutlinedIcon from "@mui/icons-material/RamenDiningOutlined";
+import useCategoriesState from "@/src/states/categories.state";
 
 type Props = {};
 
 const Categories = (props: Props) => {
+  const { nameCategories, setCategories } = useCategoriesState();
+
   let res = ["Coffee", "Pasta"];
+
   return (
-    <Box sx={{ marginTop: "50px", marginLeft: "15px" }}>
-      <Typography sx={{ fontWeight: "700px" }}> Categories </Typography>
+    <Box sx={{ marginTop: "50px", marginLeft: "20px" }}>
+      <Typography> Categories </Typography>
 
       <Box sx={{ marginTop: "10px" }}>
         <Swiper
@@ -26,10 +30,11 @@ const Categories = (props: Props) => {
               style={{
                 width: "fit-content !important",
                 maxWidth: "150px !important",
-                backgroundColor: "#fff",
+                backgroundColor: nameCategories == item ? "#AFD6C9" : "#fff",
                 padding: "5px 25px",
                 borderRadius: "40px",
               }}
+              onClick={() => setCategories(item)}
             >
               {item == "Coffee" ? (
                 <FreeBreakfastOutlinedIcon />

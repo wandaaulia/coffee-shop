@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import LayoutMain from "../layout/LayoutMain";
 import { Box, Card, Skeleton, Typography, useMediaQuery } from "@mui/material";
 import "../styles/globals.css";
-import Header from "../components/Header";
-import CardList from "../components/core/card/CardList";
 import Image from "next/image";
 import AppBarMain from "../components/AppBarMain";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
@@ -26,17 +24,23 @@ import CoreCard from "../components/core/card/CoreCard";
 import CoreImage from "../components/core/CoreImage";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CardCatalog from "../components/core/card/CardCatalog";
+import useCategoriesState from "../states/categories.state";
+import { PastaModel } from "../models/pasta.model";
 
 type Props = {};
 
 const Main = (props: Props) => {
   const [resData, setResData] = useState([]);
+  const [resPasta, setResPasta] = useState([]);
+
   const [loading, setLoading] = useState(false);
+
+  const { nameCategories } = useCategoriesState();
 
   const mq = useMediaQuery("(min-width:500px)");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCoffee = async () => {
       setLoading(true);
       try {
         const response = await fetch("/api/allCoffee");
@@ -49,7 +53,21 @@ const Main = (props: Props) => {
       }
     };
 
-    fetchData();
+    const fetchPasta = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/allPasta");
+        const data = await response.json();
+        console.log("Data ", data.data.meals);
+        setLoading(false);
+        setResPasta(data.data.meals);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCoffee();
+    fetchPasta();
   }, []);
 
   function TruncatedText(a: string) {
@@ -88,7 +106,7 @@ const Main = (props: Props) => {
               src="/img/maskGreen.png"
               alt="imgHeader"
               style={{
-                maxWidth: "400px",
+                maxWidth: mq ? "400px" : "unset",
                 maxHeight: "261px",
                 right: "auto !important",
                 left: "auto !important",
@@ -130,19 +148,36 @@ const Main = (props: Props) => {
 
           <Categories />
 
+          <Box sx={{ marginTop: "20px", marginLeft: "20px" }}>
+            <Typography> {nameCategories} </Typography>
+          </Box>
+
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
-              margin: "30px 20px 0 auto",
-              justifyContent: "center",
-              gap: "20px",
+              margin: "2px 20px 0 15px",
+              justifyContent: "flex-start",
             }}
           >
-            {resData.map((item: ResponseData, index) => (
-              <CardCatalog key={index} {...item} />
-            ))}
+            {nameCategories == "Coffee"
+              ? resData.map((item: ResponseData, index) => (
+                  <CardCatalog
+                    key={index}
+                    name={item.name}
+                    price={item.price}
+                    image_url={item.image_url}
+                  />
+                ))
+              : resPasta.map((item: PastaModel, index) => (
+                  <CardCatalog
+                    key={index}
+                    name={item.strMeal}
+                    price={12}
+                    image_url={item.strMealThumb}
+                  />
+                ))}
           </Box>
         </Box>
       </LayoutMain>

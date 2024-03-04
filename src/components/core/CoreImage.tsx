@@ -21,7 +21,17 @@ const CoreImage = ({ src, width, height, backgroundColor }: Props) => {
         alignItems: "center",
       }}
     >
-      <Image src={src} width={width} height={height} alt="card-image" />
+      <Image
+        src={src}
+        width={width}
+        height={height}
+        alt="card-image"
+        style={{
+          width,
+          height,
+        }}
+        priority
+      />
     </Box>
   );
 };
