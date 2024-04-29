@@ -117,7 +117,12 @@ export default function CartList({}: Props) {
                       <Box
                         component="button"
                         data-testid="remove-item-cart"
-                        sx={{ padding: "5px", cursor: "pointer" }}
+                        sx={{
+                          padding: "5px",
+                          cursor: "pointer",
+                          border: "none",
+                          backgroundColor: "transparent",
+                        }}
                         onClick={() =>
                           Swal.fire({
                             title: "Delete this item ?",
