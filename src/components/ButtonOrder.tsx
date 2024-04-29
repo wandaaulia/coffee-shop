@@ -38,8 +38,7 @@ export default function ButtonOrder({}: Props) {
         }}
       >
         <Typography sx={{ color: "gray" }}> amount </Typography>
-        <Typography sx={{ fontWeight: 500, fontSize: "18px" }}>
-          {" "}
+        <Typography sx={{ fontWeight: "500", fontSize: "18px" }}>
           ${totalPrice().toFixed(2)}
         </Typography>
       </Box>

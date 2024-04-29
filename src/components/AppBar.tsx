@@ -46,9 +46,10 @@ export default function AppBar({ onClick }: Props) {
           }}
         />
       </Box>
-      <Typography sx={{ textAlign: "center", fontWeight: "700" }}>
-        {" "}
-        Cart List{" "}
+      <Typography
+        sx={{ textAlign: "center", fontWeight: "700", color: "black" }}
+      >
+        Cart List
       </Typography>
     </Box>
   );

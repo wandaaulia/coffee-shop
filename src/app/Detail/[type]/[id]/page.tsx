@@ -188,7 +188,10 @@ export default function Detail({
                     justifyContent: "space-between",
                   }}
                 >
-                  <Typography sx={{ fontWeight: "500" }}> Region </Typography>
+                  <Typography sx={{ fontWeight: "500", color: "#000" }}>
+                    {" "}
+                    Region{" "}
+                  </Typography>
                   <Box
                     sx={{
                       borderRadius: "10px",
@@ -216,10 +219,16 @@ export default function Detail({
                   }}
                 >
                   <>
-                    <Typography sx={{ fontWeight: "500" }}>
+                    <Typography sx={{ fontWeight: "500", color: "#000" }}>
                       Description
                     </Typography>
-                    <Typography sx={{ fontWeight: "300", marginTop: "5px" }}>
+                    <Typography
+                      sx={{
+                        fontWeight: "300",
+                        marginTop: "5px",
+                        color: "#000",
+                      }}
+                    >
                       {resData.description !== ""
                         ? resData.description
                         : `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus enim ut mi sagittis dapibus. Aliquam ornare scelerisque velit et malesuada. Sed quis fermentum nulla. Aenean nec ultrices nulla.  `}

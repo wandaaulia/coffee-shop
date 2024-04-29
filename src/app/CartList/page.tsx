@@ -121,7 +121,7 @@ export default function CartList({}: Props) {
                           padding: "5px",
                           cursor: "pointer",
                           border: "none",
-                          backgroundColor: "transparent",
+                          backgroundColor: "#fff",
                         }}
                         onClick={() =>
                           Swal.fire({
