@@ -4,22 +4,39 @@ import React, { ReactElement } from "react";
 
 type Props = {
   src: string;
-  width: number | undefined;
-  height: number | undefined;
+  width?: number | undefined;
+  height?: number | undefined;
   backgroundColor?: string;
+  maxHeightImage?: string;
+  style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
-const CoreImage = ({ src, width, height, backgroundColor }: Props) => {
+const CoreImage = ({
+  src,
+  width = 190,
+  height = 140,
+  backgroundColor,
+  style,
+  onClick,
+  ...props
+}: Props) => {
   return (
     <Box
+      {...props}
+      component={onClick ? "button" : "div"}
+      className="wrap-image"
       sx={{
         backgroundColor: backgroundColor ?? "#fff",
-        width: "120px",
-        height: "120px",
-        borderRadius: "10px",
+        width: "190px",
+        height: "140px",
         display: "flex",
         alignItems: "center",
+        maxHeight: "140px",
+        margin: "auto",
       }}
+      style={{ justifyContent: "space-between" }}
+      onClick={onClick}
     >
       <Image
         src={src}
@@ -28,7 +45,8 @@ const CoreImage = ({ src, width, height, backgroundColor }: Props) => {
         alt="card-image"
         style={{
           width,
-          height,
+          objectFit: "cover",
+          ...style,
         }}
         priority
       />

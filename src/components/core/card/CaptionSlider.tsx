@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import StringUtil from "@/utils/string.util";
 
 type Props = {
   name: string;
@@ -7,12 +8,6 @@ type Props = {
 };
 
 const CaptionSlider = (props: Props) => {
-  function TruncatedText(a: string) {
-    const truncatedText = a.length > 8 ? a.slice(0, 14) + "..." : a;
-
-    return <span>{truncatedText}</span>;
-  }
-
   return (
     <Box
       className="caption-slider"
@@ -21,6 +16,7 @@ const CaptionSlider = (props: Props) => {
         flexDirection: "column",
         width: "120px",
         marginTop: "35px",
+        cursor: "default",
       }}
     >
       <Typography
@@ -31,7 +27,7 @@ const CaptionSlider = (props: Props) => {
           textWrap: "nowrap",
         }}
       >
-        {TruncatedText(props.name)}
+        <span> {StringUtil.TruncatedText(props.name)} </span>
       </Typography>
       <Box
         sx={{

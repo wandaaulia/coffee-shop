@@ -4,7 +4,6 @@ import React, { MouseEventHandler } from "react";
 type Props = {
   children: React.ReactElement;
   style?: React.CSSProperties;
-
   onClick?: MouseEventHandler<HTMLDivElement> | undefined;
 };
 

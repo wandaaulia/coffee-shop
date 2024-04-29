@@ -92,16 +92,19 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background-color: #f7f7f7;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+
+  background-color: var(--background-start-rgb);
 }
 
 .main {
@@ -111,6 +114,7 @@ body {
   padding: 5rem 6rem 6rem;
   min-height: 100vh;
   background-color: #f7f7f7;
+  overflow-x: hidden !important;
 }
 
 a {
@@ -168,6 +172,11 @@ a {
   overflow: visible !important;
 }
 
+.swiper-container-1 {
+  overflow-x: visible !important; /* Override swiper's default overflow-x */
+  overflow-y: hidden !important; /* Override swiper's default overflow-y */
+}
+
 .swiper {
   overflow: visible !important;
   overflow-x: hidden;
@@ -217,7 +226,7 @@ a {
 
 .swiper-slide.swiper-slide-active .imgSlide {
   width: 140px;
-  height: 150px;
+  height: 140px;
   bottom: 60px;
 }
 
@@ -231,4 +240,36 @@ a {
 
 .swiper-slide.swiper-slide-active .active-caption-slider {
   display: flex;
+}
+
+.add-popup {
+  height: 20vh;
+}
+
+.add-popup .swal2-icon {
+  font-size: 8px;
+}
+
+.add-popup .swal2-html-container {
+  margin: 0px;
+}
+
+.delete-popup .swal2-title {
+  font-size: 22px !important;
+  font-weight: 500 !important;
+}
+
+.delete-popup .swal2-confirm {
+  font-size: 15px;
+  color: #ffff;
+  background-color: #129465 !important;
+  font-weight: 500px;
+}
+
+.delete-popup .swal2-cancel {
+  font-size: 15px;
+  font-weight: 500px;
+  background-color: transparent;
+  color: black;
+  border: 1px solid #dbdbdb;
 }

@@ -4,8 +4,8 @@ import React from "react";
 import { SwiperSlide } from "swiper/react";
 import ActiveCaptionSlider from "./ActiveCaptionSlider";
 import CaptionSlider from "./CaptionSlider";
-import { ResponseData } from "@/src/models/coffee.model";
-import "@/src/styles/globals.css";
+import { ResponseData } from "@/models/coffee.model";
+import "@/styles/globals.css";
 
 const SliderMenu = (item: ResponseData) => {
   return (

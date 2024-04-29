@@ -20,6 +20,7 @@ const ActiveCaptionSlider = (props: Props) => {
         flexDirection: "column",
         width: "140px",
         padding: "10px",
+        cursor: "default",
       }}
     >
       <Typography
